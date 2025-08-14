@@ -1,6 +1,6 @@
 <?php
 //nfsuserver 0.9.8 monitoring v.0.0.3 by SeazoN
-$server['ip'] = '127.0.0.1';
+$server['ip'] = '192.168.100.37';
 $server['port'] = 10980;
 $string = '';
 

@@ -14,7 +14,7 @@
 		Fixed double connection bug
 
 /* Set your nfs:u server ip adress here! */
-$server_ip = "127.0.0.1";
+$server_ip = "192.168.100.37";
 $server_port = 10980;
 /* ------------------------------------- */
 
@@ -92,7 +92,7 @@ function printRoomTable($roomtype){
 			for($j=0; $j<($rooms[$i]->count); $j++){
 			        echo "<tr> 
           			<td width=\"10%\" class=\"tduser\">&nbsp;</td>
-          			<td colspan=\"2\" class=\"tduser\">".($rooms[$i]->arrusers[$j])."</td>
+	          		<td colspan=\"2\" class=\"tduser\">".(isset($rooms[$i]->arrusers[$j]) ? $rooms[$i]->arrusers[$j] : '')."</td>
         			</tr>";
 			}	
 		}
@@ -177,13 +177,15 @@ else
 	}
 	$arrdata=null; //cleaning..
 }
-@fclose($fp);
+if ($fp) {
+	fclose($fp);
+}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>NFS:U LAN Server "<?php echo($servername); ?>" @ <?p$server_ip;?> : <?php 
+<title>NFS:U LAN Server "<?php echo($servername); ?>" @ <?php echo($server_ip); ?> : <?php 
 	if($msg)
 		echo "Offline";
 	else

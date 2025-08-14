@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    container_name: nfsu_web
+    ports:
+      - "5050:80"
+    volumes:
+      - ./web:/var/www/html/web
+    restart: unless-stopped
